@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-opentelemetry",
+  "version": "1.0.0",
+  "description": "Basic NodeJS sevice with OpenTelemetry",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --require './tracing.js' index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itamar-marom/nodejs-opentelemetry.git"
+  },
+  "author": "Itamar Marom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itamar-marom/nodejs-opentelemetry/issues"
+  },
+  "homepage": "https://github.com/itamar-marom/nodejs-opentelemetry#readme",
+  "dependencies": {
+    "@opentelemetry/api": "^1.0.4",
+    "@opentelemetry/auto-instrumentations-node": "^0.27.1",
+    "@opentelemetry/metrics": "^0.24.0",
+    "@opentelemetry/sdk-node": "^0.27.0",
+    "express": "^4.17.2"
+  }
+}

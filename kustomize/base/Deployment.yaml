@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-opentelemetry
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-opentelemetry
+  template:
+    metadata:
+      labels:
+        app: nodejs-opentelemetry
+    spec:
+      containers:
+      - name: nodejs-opentelemetry
+        image: maromitamar/devops-toolkit:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        envFrom:
+          - configMapRef:
+              name: nodejs-opentelemetry
+        # ports:
+        # - containerPort: 8080

@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: github
+spec:
+  github:
+    nodejs-opentelemetry:
+      owner: itamar-marom
+      repository: nodejs-opentelemetry
+      webhook:
+        endpoint: /
+        port: "12345"
+        method: POST
+        url: http://nodejs-opentelemetry-webhook.kubernetes.white-noise.click
+      events:
+        - "*"
+      apiToken:
+        name: github-access
+        key: token
+      insecure: true
+      active: true
+      contentType: "json"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: github-eventsource-svc
+spec:
+  ports:
+  - port: 12345
+    protocol: TCP
+    targetPort: 12345
+  selector:
+    eventsource-name: github
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: events-webhook
+  labels:
+    name: events-webhook
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  rules:
+  - host: nodejs-opentelemetry-webhook.kubernetes.white-noise.click
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: github-eventsource-svc
+            port: 
+              number: 12345
+  tls:
+  - hosts:
+    - nodejs-opentelemetry-webhook.kubernetes.white-noise.click
