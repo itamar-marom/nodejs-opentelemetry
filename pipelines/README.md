@@ -1,0 +1,1 @@
+# NodeJS with OpenTelemetry basic service
