@@ -21,5 +21,6 @@ spec:
         envFrom:
           - configMapRef:
               name: nodejs-opentelemetry
+        imagePullPolicy: Always
         # ports:
         # - containerPort: 8080
