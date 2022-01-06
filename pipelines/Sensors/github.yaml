@@ -14,7 +14,10 @@ spec:
       name: slack-trigger
       slack:
         channel: general
-        message: "nodejs-opentelemetry service updated. For its pipeline: https://argo-workflows.kubernetes.white-noise.click/workflows"
+        message: |
+          nodejs-opentelemetry service updated. 
+          workflow: https://argo-workflows.kubernetes.white-noise.click/workflows
+          environment: https://argocd.kubernetes.white-noise.click/applications/development-app-nodejs-opentelemetry
         slackToken:
           key: token
           name: slack-secret
