@@ -7,15 +7,17 @@ const app = express();
 
 app.get("/", (req, res) => {
   const text = `<h1>Hello and welcome to the photo library. </h1>
-  <h4>  For Amit the pig masterpiece -> /amit</h4>
+  
   <h4>  For J.cole -> /jcole</h4>
   `
   res.send(text);
 });
 
-app.get("/amit", (req, res) => {
-  res.sendFile('./public/amit.jpeg', {root: './'});
-});
+{/* <h4>  For Amit the pig masterpiece -> /amit</h4> */}
+
+// app.get("/amit", (req, res) => {
+//   res.sendFile('./public/amit.jpeg', {root: './'});
+// });
 
 app.get("/jcole", (req, res) => {
   res.sendFile('./public/jcole.jpg', {root: './'});
