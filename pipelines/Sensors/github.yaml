@@ -7,10 +7,10 @@ spec:
     serviceAccountName: argo-events-sa
   dependencies:
   - name: payload
-    eventSourceName: github
+    eventSourceName: nodejs-opentelemetry-github
     eventName: nodejs-opentelemetry
   - name: pipeline
-    eventSourceName: github
+    eventSourceName: nodejs-opentelemetry-github
     eventName: nodejs-opentelemetry
   triggers:
   - template:
