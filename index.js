@@ -6,9 +6,9 @@ const app = express();
 // app.use(countAllRequests());
 
 app.get("/", (req, res) => {
-  text = `Hello and welcome to the photo library.
-  For Amit the pig masterpiece -> /amit
-  For J.cole -> jcole
+  const text = `<h1>Hello and welcome to the photo library. </h1>
+  <h4>  For Amit the pig masterpiece -> /amit</h4>
+  <h4>  For J.cole -> jcole</h4>
   `
   res.send(text);
 });
