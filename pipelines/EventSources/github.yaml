@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-opentelemetry-github-eventsource
+  name: nodejs-opentelemetry-github-eventsource-svc
 spec:
   ports:
   - port: 12345
@@ -52,7 +52,7 @@ spec:
         path: "/"
         backend:
           service:
-            name: nodejs-opentelemetry-github-eventsource
+            name: nodejs-opentelemetry-github-eventsource-svc
             port: 
               number: 12345
   tls:
