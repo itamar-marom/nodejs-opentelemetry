@@ -4,6 +4,10 @@ metadata:
   name: nodejs-opentelemetry
   labels:
     name: nodejs-opentelemetry
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
   - host: nodejs-opentelemetry.kubernetes.white-noise.click
@@ -16,3 +20,6 @@ spec:
             name: nodejs-opentelemetry
             port: 
               number: 8080
+  tls:
+  - hosts:
+    - nodejs-opentelemetry.kubernetes.white-noise.click

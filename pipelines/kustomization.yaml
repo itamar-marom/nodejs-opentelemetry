@@ -7,3 +7,5 @@ resources:
 - ./Sensors
 
 namePrefix: nodejs-opentelemetry-
+
+namespace: development

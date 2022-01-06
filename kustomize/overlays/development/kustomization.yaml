@@ -8,6 +8,7 @@ namespace: development
 
 configMapGenerator:
   - name: nodejs-opentelemetry
+    behavior: replace
     literals:
     - PORT=8080
     options:

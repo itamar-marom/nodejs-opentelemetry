@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: nodejs-opentelemetry
-        image: maromitamar/devops-toolkit:latest
+        image: maromitamar/nodejs-opentelemetry:latest
         resources:
           limits:
             memory: "128Mi"
