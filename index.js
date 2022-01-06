@@ -8,6 +8,10 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+app.get("/amit", (req, res) => {
+  res.sendFile('./public/amit.jpeg', {root: './'});
+});
+
 app.listen(parseInt(PORT, 10), () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
