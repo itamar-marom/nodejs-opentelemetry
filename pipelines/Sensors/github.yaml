@@ -11,33 +11,6 @@ spec:
     eventName: nodejs-opentelemetry
   triggers:
   - template:
-      name: payload
-      k8s:
-        group: ""
-        version: v1
-        resource: pods
-        operation: create
-        source:
-          resource:
-            apiVersion: v1
-            kind: Pod
-            metadata:
-              generateName: payload-
-              labels:
-                app: payload
-            spec:
-              containers:
-              - name: hello
-                image: alpine
-                command: ["echo"]
-                args: ["This is the message you sent me:\n", ""]
-              restartPolicy: Never
-        parameters:
-          - src:
-              dependencyName: payload
-              dataKey: body.zen
-            dest: spec.containers.0.args.1
-  - template:
       name: pipeline
       argoWorkflow:
         group: argoproj.io
@@ -78,3 +51,36 @@ spec:
                         value: maromitamar/nodejs-opentelemetry
                       - name: container_tag
                         value: "latest"
+                  - name: deploy-staging
+                    template: echo
+                    arguments:
+                      parameters:
+                      - name: message
+                        value: Deploying to the staging cluster...
+                    dependencies:
+                    - build-container-image
+                  - name: tests
+                    template: echo
+                    arguments:
+                      parameters:
+                      - name: message
+                        value: Running integration tests (before, during, and after the deployment is finished)...
+                    dependencies:
+                    - build-container-image
+                  - name: deploy-production
+                    template: echo
+                    arguments:
+                      parameters:
+                      - name: message
+                        value: Deploying to the production cluster...
+                    dependencies:
+                    - tests
+              - name: echo
+                inputs:
+                  parameters:
+                  - name: message
+                container:
+                  image: alpine
+                  command: [echo]
+                  args:
+                  - "{{inputs.parameters.message}}"
