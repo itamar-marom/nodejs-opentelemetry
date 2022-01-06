@@ -8,4 +8,4 @@ resources:
 
 namePrefix: nodejs-opentelemetry-
 
-namespace: development
+namespace: argo-events
