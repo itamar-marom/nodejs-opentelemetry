@@ -5,11 +5,11 @@ const app = express();
 // app.use(countAllRequests());
 
 app.get("/", (req, res) => {
-  res.send("Hi Amit! Please add /amit at the end of the URL for a suprise");
+  res.send("Hello, for the j.cole picture please go to /jcole");
 });
 
-app.get("/amit", (req, res) => {
-  res.sendFile('./public/amit.jpeg', {root: './'});
+app.get("/jcole", (req, res) => {
+  res.sendFile('./public/jcole.jpg', {root: './'});
 });
 
 app.listen(parseInt(PORT, 10), () => {
