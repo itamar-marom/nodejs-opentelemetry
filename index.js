@@ -5,7 +5,7 @@ const app = express();
 // app.use(countAllRequests());
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Hi Amit! Please add /amit at the end of the URL for a suprise");
 });
 
 app.get("/amit", (req, res) => {
