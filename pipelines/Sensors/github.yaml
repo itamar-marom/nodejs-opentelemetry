@@ -18,15 +18,15 @@ spec:
         slackToken:
           key: token
           name: slack-secret
-    parameters:
-      - src:
-          dependencyName: git
-          dataKey: body.channel
-        dest: slack.channel
-      - src:
-          dependencyName: git
-          dataKey: body.message
-        dest: slack.message
+    # parameters:
+    #   - src:
+    #       dependencyName: git
+    #       dataKey: body.channel
+    #     dest: slack.channel
+    #   - src:
+    #       dependencyName: git
+    #       dataKey: body.message
+    #     dest: slack.message
   - template:
       name: pipeline
       argoWorkflow:
