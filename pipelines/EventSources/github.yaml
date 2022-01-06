@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: EventSource
 metadata:
-  name: github
+  name: nodejs-opentelemetry-github
 spec:
   github:
     nodejs-opentelemetry:
@@ -24,21 +24,21 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: github-eventsource-svc
+  name: nodejs-opentelemetry-github-eventsource
 spec:
   ports:
   - port: 12345
     protocol: TCP
     targetPort: 12345
   selector:
-    eventsource-name: github
+    eventsource-name: nodejs-opentelemetry-github
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: events-webhook
+  name: nodejs-opentelemetry-events-webhook
   labels:
-    name: events-webhook
+    name: nodejs-opentelemetry-events-webhook
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
@@ -52,7 +52,7 @@ spec:
         path: "/"
         backend:
           service:
-            name: github-eventsource-svc
+            name: nodejs-opentelemetry-github-eventsource
             port: 
               number: 12345
   tls:

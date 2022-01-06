@@ -6,6 +6,4 @@ resources:
 - ./EventSources
 - ./Sensors
 
-namePrefix: nodejs-opentelemetry-
-
 namespace: argo-events
