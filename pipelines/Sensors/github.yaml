@@ -4,7 +4,8 @@ metadata:
   name: nodejs-opentelemetry-github
 spec:
   template:
-    serviceAccountName: argo-events-sa
+    # serviceAccountName: argo-events-sa
+    serviceAccountName: argo
   dependencies:
   - name: git
     eventSourceName: nodejs-opentelemetry-github
