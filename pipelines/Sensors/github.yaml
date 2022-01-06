@@ -15,7 +15,7 @@ spec:
       slack:
         channel: general
         message: |
-          nodejs-opentelemetry service updated. 
+          nodejs-opentelemetry service updated: http://nodejs-opentelemetry.kubernetes.white-noise.click
           workflow: https://argo-workflows.kubernetes.white-noise.click/workflows
           environment: https://argocd.kubernetes.white-noise.click/applications/development-app-nodejs-opentelemetry
         slackToken:
