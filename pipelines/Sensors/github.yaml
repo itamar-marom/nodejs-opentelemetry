@@ -45,6 +45,9 @@ spec:
                   items:
                     - key: .dockerconfigjson
                       path: config.json
+              workflowTemplateRef:
+                name: build-container-image
+                clusterScope: true
               arguments:
                 parameters:
                 - name: app_repo
@@ -53,6 +56,3 @@ spec:
                   value: maromitamar/nodejs-opentelemetry
                 - name: container_tag
                   value: "latest"
-              workflowTemplateRef:
-                name: build-container-image
-                clusterScope: true
