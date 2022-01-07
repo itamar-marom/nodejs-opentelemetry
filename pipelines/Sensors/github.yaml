@@ -36,6 +36,7 @@ spec:
               generateName: nodejs-opentelemetry-
               namespace: argo
             spec:
+              archiveLogs: true
               serviceAccountName: argo
               entryPoint: kaniko-build-image
               volumes:
