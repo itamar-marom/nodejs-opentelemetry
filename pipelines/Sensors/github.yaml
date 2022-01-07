@@ -21,15 +21,6 @@ spec:
         slackToken:
           key: token
           name: slack-secret
-    # parameters:
-    #   - src:
-    #       dependencyName: git
-    #       dataKey: body.channel
-    #     dest: slack.channel
-    #   - src:
-    #       dependencyName: git
-    #       dataKey: body.message
-    #     dest: slack.message
   - template:
       name: pipeline
       argoWorkflow:
@@ -54,53 +45,14 @@ spec:
                   items:
                     - key: .dockerconfigjson
                       path: config.json
-              templates:
-              - name: build
-                dag:
-                  tasks:
-                  - name: build-container-image
-                    templateRef:
-                      name: container-image
-                      template: build-kaniko-git
-                      clusterScope: true
-                    arguments:
-                      parameters:
-                      - name: app_repo
-                        value: git://github.com/itamar-marom/nodejs-opentelemetry
-                      - name: container_image
-                        value: maromitamar/nodejs-opentelemetry
-                      - name: container_tag
-                        value: "latest"
-                  - name: deploy-staging
-                    template: echo
-                    arguments:
-                      parameters:
-                      - name: message
-                        value: Deploying to the staging cluster...
-                    dependencies:
-                    - build-container-image
-                  - name: tests
-                    template: echo
-                    arguments:
-                      parameters:
-                      - name: message
-                        value: Running integration tests (before, during, and after the deployment is finished)...
-                    dependencies:
-                    - build-container-image
-                  - name: deploy-production
-                    template: echo
-                    arguments:
-                      parameters:
-                      - name: message
-                        value: Deploying to the production cluster...
-                    dependencies:
-                    - tests
-              - name: echo
-                inputs:
-                  parameters:
-                  - name: message
-                container:
-                  image: alpine
-                  command: [echo]
-                  args:
-                  - "{{inputs.parameters.message}}"
+              arguments:
+                parameters:
+                - name: app_repo
+                  value: git://github.com/itamar-marom/nodejs-opentelemetry
+                - name: container_image
+                  value: maromitamar/nodejs-opentelemetry
+                - name: container_tag
+                  value: "latest"
+              workflowTemplateRef:
+                name: build-container-image
+                clusterScope: true
