@@ -45,14 +45,14 @@ spec:
                   items:
                     - key: .dockerconfigjson
                       path: config.json
+              arguments:
+                parameters:
+                - name: app_repo
+                  value: git://github.com/itamar-marom/nodejs-opentelemetry
+                - name: container_image
+                  value: maromitamar/nodejs-opentelemetry
+                - name: container_tag
+                  value: "latest"
               workflowTemplateRef:
                 name: build-container-image
                 clusterScope: true
-              # arguments:
-              #   parameters:
-              #   - name: app_repo
-              #     value: git://github.com/itamar-marom/nodejs-opentelemetry
-              #   - name: container_image
-              #     value: maromitamar/nodejs-opentelemetry
-              #   - name: container_tag
-              #     value: "latest"
