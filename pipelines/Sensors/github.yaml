@@ -37,6 +37,7 @@ spec:
               namespace: argo
             spec:
               serviceAccountName: argo
+              entryPoint: kaniko-build-image
               volumes:
               - name: kaniko-secret
                 secret:
