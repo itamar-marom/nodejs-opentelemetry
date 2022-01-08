@@ -6,8 +6,6 @@ resources:
 - service.yaml
 - ingress.yaml
 
-namespace: itamar
-
 configMapGenerator:
   - name: nodejs-opentelemetry
     literals:
