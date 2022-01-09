@@ -55,7 +55,7 @@ ingress:
   tls:
   #  - secretName: chart-example-tls
   - hosts:
-    - helm nodejs-opentelemetry.kubernetes.white-noise.click
+    - helm-nodejs-opentelemetry.kubernetes.white-noise.click
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
