@@ -5,4 +5,4 @@ metadata:
   labels:
     {{- include "nodejs-opentelemetry.labels" . | nindent 4 }}
 data:
-  PORT: 80
+  PORT: "80"
