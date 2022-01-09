@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  nodejs-opentelemetry:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-01-09T14:22:41.010525+02:00"
+    description: A Helm chart for Kubernetes
+    digest: 9e47f50c239ca3ee19a7235fc0ac97a31d38ec4c75304d1490eee63b3873b520
+    name: nodejs-opentelemetry
+    type: application
+    urls:
+    - https://github.com/itamar-marom/nodejs-opentelemetry/helm/nodejs-opentelemetry/nodejs-opentelemetry-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-01-09T14:22:41.008657+02:00"
